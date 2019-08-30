@@ -1,9 +1,13 @@
 <nav class="navbar navbar-light bg-light">
     <a class="navbar-brand">User List</a>
     <form class="form-inline">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
       <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Add</button>
     </form>
-    
-  </nav>
+</nav>
+
+<ul class="list-group">
+    <li *ngFor="let user of users" class="list-group-item">
+      {{user.username}} {{user.email}} {{user.type}}
+      <button type="button" class="btn btn-light float-right">EDIT</button>
+    </li>
+</ul>

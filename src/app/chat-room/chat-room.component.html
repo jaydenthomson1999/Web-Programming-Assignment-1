@@ -1,3 +1,48 @@
-<p>
-  chat-room works!
-</p>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+          <li class="navbar-brand mb-0 h1">{{user.username}}</li>
+          <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
+                  Groups
+              </a>
+              <div class="dropdown-menu">
+                  <a class="dropdown-item" href="#">Link 1</a>
+                  <a class="dropdown-item" href="#">Link 2</a>
+                  <a class="dropdown-item" href="#">Link 3</a>
+              </div>
+          </li>
+          <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
+                  Channels
+              </a>
+              <div class="dropdown-menu">
+                  <a class="dropdown-item" href="#">Link 1</a>
+                  <a class="dropdown-item" href="#">Link 2</a>
+                  <a class="dropdown-item" href="#">Link 3</a>
+              </div>
+          </li>
+          <li *ngIf="privilege" class="nav-item active">
+              <a class="nav-link">Users<span class="sr-only"></span></a>
+          </li>
+
+      </ul>
+  </div>
+</nav>
+
+<div id="messages">
+  <div class="bg-light">
+    <div class="input-group mb-3">
+      <input [(ngModel)]="messageIn" name="messageIn" type="text" class="form-control" placeholder="Message Chat" aria-describedby="basic-addon2">
+      <div class="input-group-append">
+        <button (click)="chat()" class="btn btn-outline-secondary" type="button">Send</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="overflow-auto">
+    <ul id="message-list" class="list-group">
+      <li *ngFor="let message of messages" class="list-group-item">{{message}}</li>
+    </ul>
+  </div>
+</div>

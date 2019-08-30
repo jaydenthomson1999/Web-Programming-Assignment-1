@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginServiceService } from '../service/login-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +11,9 @@ export class LoginComponent implements OnInit {
   private username = '';
   private password = '';
 
-  constructor(private loginService: LoginServiceService) { }
+  constructor(private loginService: LoginServiceService,
+              private router: Router
+  ) { }
 
   ngOnInit() {
   }
@@ -19,6 +22,7 @@ export class LoginComponent implements OnInit {
     this.loginService.login(this.username, this.password).then(data => {
       if (sessionStorage.getItem('user') != null) {
         // redirect
+        this.router.navigateByUrl('/chat-room');
       }
     });
   }

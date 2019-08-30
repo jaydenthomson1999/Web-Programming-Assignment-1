@@ -1,5 +1,2 @@
-{
-    "users": [
-        { "username": "super",  "email": "admin@chat.com", "password": "super", "type": "super" }
-    ]
-}
+{"users":[{"username":"super","email":"admin@chat.com","password":"super","type":"super"},
+    {"username":"johndoe","passwprd":"password","email":"email","type":"basic"}]}

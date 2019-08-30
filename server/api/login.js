@@ -5,7 +5,6 @@ module.exports = function(app, fs) {
         
         fs.readFile(__dirname + '/../users.json', (err, data) => {
             if (err) {
-                console.log(err);
                 res.json({'err': err});
             }
             else {

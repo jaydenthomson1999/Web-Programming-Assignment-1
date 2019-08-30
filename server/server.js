@@ -15,8 +15,10 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
-//create sign in route
+//user routes
 require(__dirname + '/api/login.js')(app, fs);
+require(__dirname + '/api/add-user.js')(app, fs);
+require(__dirname + '/api/get-users.js')(app, fs);
 
 //Start server listening for requests
 server.listen(http, PORT);

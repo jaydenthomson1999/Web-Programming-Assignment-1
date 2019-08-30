@@ -13,7 +13,7 @@ const PORT = 3000;
 //Apply express middleware
 app.use(cors());
 app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({extended: true}));
 
 //create sign in route
 require(__dirname + '/api/login.js')(app, fs);

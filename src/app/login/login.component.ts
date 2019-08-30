@@ -19,7 +19,8 @@ export class LoginComponent implements OnInit {
   }
 
   private loginAttempt() {
-    this.loginService.login(this.username, this.password).then(data => {
+    const login = this.loginService.login(this.username, this.password);
+    login.then(data => {
       if (sessionStorage.getItem('user') != null) {
         // redirect
         this.router.navigateByUrl('/chat-room');

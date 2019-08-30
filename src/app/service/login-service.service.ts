@@ -7,6 +7,8 @@ interface Post {
   username: string;
   email: string;
   type: string;
+  groupList: string[];
+  adminGroupList: string[];
 }
 
 @Injectable({

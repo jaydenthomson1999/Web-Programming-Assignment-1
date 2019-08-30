@@ -17,7 +17,8 @@ module.exports = function(app, fs) {
                         return;
                     }
                 }
-
+                new_user.groupList = [];
+                new_user.adminGroupList = [];
                 users.users.push(new_user);
 
                 fs.writeFile(__dirname + '/../users.json', JSON.stringify(users)

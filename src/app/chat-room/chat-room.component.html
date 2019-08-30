@@ -2,26 +2,20 @@
   <div id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
           <li class="navbar-brand mb-0 h1">{{user.username}}</li>
-          <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
-                  Groups
-              </a>
-              <div class="dropdown-menu">
-                  <a class="dropdown-item" href="#">Link 1</a>
-                  <a class="dropdown-item" href="#">Link 2</a>
-                  <a class="dropdown-item" href="#">Link 3</a>
-              </div>
-          </li>
-          <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
-                  Channels
-              </a>
-              <div class="dropdown-menu">
-                  <a class="dropdown-item" href="#">Link 1</a>
-                  <a class="dropdown-item" href="#">Link 2</a>
-                  <a class="dropdown-item" href="#">Link 3</a>
-              </div>
-          </li>
+          <div class="form-inline pr-3">
+              <label for="exampleFormControlSelect1">Group: </label>
+              <select class="form-control ml-1" id="exampleFormControlSelect1">
+                
+              </select>
+              <button type="button" class="btn btn-primary btn-sm ml-1">+</button>
+            </div>
+          <div class="form-inline pr-3">
+              <label for="exampleFormControlSelect1">Channel</label>
+              <select class="form-control ml-1" id="exampleFormControlSelect1">
+
+              </select>
+              <button type="button" class="btn btn-primary btn-sm ml-1">+</button>
+            </div>
           <li *ngIf="privilege" class="nav-item active">
               <a routerLink="/user-list" class="nav-link" >Users<span class="sr-only"></span></a>
           </li>

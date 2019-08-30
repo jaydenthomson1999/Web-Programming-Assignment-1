@@ -1,2 +1,1 @@
-{"users":[{"username":"super","email":"admin@chat.com","password":"super","type":"super"},
-    {"username":"johndoe","passwprd":"password","email":"email","type":"basic"}]}
+{"users":[{"username":"super","email":"admin@chat.com","password":"super","type":"super"},{"username":"johndoe","password":"password","email":"email","type":"basic"},{"username":"janedoe","password":"password","email":"email","type":"basic"},{"username":"jayden","password":"pswd","email":"jaydenthomson1999@gmail.com","type":"basic"}]}

@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ChatRoomComponent } from './chat-room/chat-room.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { UserListComponent } from './user-list/user-list.component';
+import { UserAddComponent } from './user-add/user-add.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { UserListComponent } from './user-list/user-list.component';
     AppComponent,
     LoginComponent,
     ChatRoomComponent,
-    UserListComponent
+    UserListComponent,
+    UserAddComponent
   ],
   imports: [
     BrowserModule,

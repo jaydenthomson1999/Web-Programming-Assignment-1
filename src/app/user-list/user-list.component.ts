@@ -19,8 +19,7 @@ export class UserListComponent implements OnInit {
   private channel;
   private users;
 
-  constructor(private http: HttpClient, private router: Router,
-    private route: ActivatedRoute) {
+  constructor(private http: HttpClient, private router: Router) {
     const user = JSON.parse(sessionStorage.getItem('user'));
     if (user === null) {
       this.router.navigateByUrl('/');
@@ -56,6 +55,10 @@ export class UserListComponent implements OnInit {
     data.then(json => {
       this.users = json;
     });
+  }
+
+  delUser() {
+    
   }
 
 }

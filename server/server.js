@@ -19,6 +19,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 require(__dirname + '/api/login.js')(app, fs);
 require(__dirname + '/api/add-user.js')(app, fs);
 require(__dirname + '/api/get-users.js')(app, fs);
+require(__dirname + '/api/del-user.js')(app, fs);
 
 //group api
 require(__dirname + '/api/add-group.js')(app, fs);

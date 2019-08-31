@@ -22,6 +22,7 @@ require(__dirname + '/api/get-users.js')(app, fs);
 
 //group api
 require(__dirname + '/api/add-group.js')(app, fs);
+require(__dirname + '/api/get-groups.js')(app, fs);
 
 //Start server listening for requests
 server.listen(http, PORT);

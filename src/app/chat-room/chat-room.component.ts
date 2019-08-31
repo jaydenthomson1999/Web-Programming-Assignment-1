@@ -85,8 +85,7 @@ export class ChatRoomComponent implements OnInit {
         if (bool) {
           // get user groups
           this.get_groups();
-        }
-        else {
+        } else {
           alert('Couldn\'t add group');
         }
       });

@@ -24,6 +24,7 @@ require(__dirname + '/api/del-user.js')(app, fs);
 //group api
 require(__dirname + '/api/add-group.js')(app, fs);
 require(__dirname + '/api/get-groups.js')(app, fs);
+require(__dirname + '/api/add-channel.js')(app, fs);
 
 //Start server listening for requests
 server.listen(http, PORT);

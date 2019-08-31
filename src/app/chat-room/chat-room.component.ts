@@ -31,6 +31,7 @@ export class ChatRoomComponent implements OnInit {
 
   private addGroupUrl = 'http://localhost:3000/api/add-group';
   private getGroupUrl = 'http://localhost:3000/api/get-groups';
+  private addChannelUrl = 'http://localhost:3000/api/add-channel';
 
   private selectedGroup: string;
   private selectedChannel: string;
@@ -89,9 +90,35 @@ export class ChatRoomComponent implements OnInit {
           alert('Couldn\'t add group');
         }
       });
-    }
-    else {
+    } else {
       // add channel api
+      const data = new Promise((resolve, reject) => {
+        this.http.put<Put>(this.addChannelUrl, {
+          username: this.user.username,
+          groupName: this.selectedGroup,
+          channelName: this.modalInput
+        }).subscribe(
+          res => {
+            if (res.add) {
+              resolve(res.add);
+            } else {
+              resolve(false);
+            }
+          },
+          (err: HttpErrorResponse) => {
+            console.log(err.error);
+            reject(err.error);
+          }
+        );
+      });
+
+      data.then(bool => {
+        if (bool) {
+          this.get_groups();
+        } else {
+          alert('Couldn\'t add channel');
+        }
+      });
     }
   }
 

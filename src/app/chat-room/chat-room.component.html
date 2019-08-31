@@ -3,7 +3,7 @@
       <ul class="navbar-nav">
           <li class="navbar-brand mb-0 h1">{{user.username}}</li>
           <div class="form-inline pr-3">
-              <label for="exampleFormControlSelect1">Group: </label>
+              <label for="exampleFormControlSelect1">Group</label>
               <select [(ngModel)]="selectedGroup" (change)="groupSelected()" class="form-control ml-1" id="exampleFormControlSelect1">
                 <option *ngFor='let group of groupList'>{{group.groupName}}</option>
               </select>
@@ -14,7 +14,7 @@
               <select [(ngModel)]="selectedChannel" class="form-control ml-1" id="exampleFormControlSelect1">
                 <option *ngFor="let channel of channelList">{{channel}}</option>
               </select>
-              <button (click)="addChannelModal()" data-toggle="modal" data-target="#myModal" type="button" class="btn btn-primary btn-sm ml-1">+</button>
+              <button *ngIf="selectedGroup != undefined" (click)="addChannelModal()" data-toggle="modal" data-target="#myModal" type="button" class="btn btn-primary btn-sm ml-1">+</button>
             </div>
           <li *ngIf="privilege" class="nav-item active mr-3">
               <a (click)="goto_users()" class="nav-link" >Users<span class="sr-only"></span></a>

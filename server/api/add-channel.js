@@ -42,8 +42,6 @@ module.exports = function(app, fs) {
                             }
                     }
 
-                    console.log(users.users[userIndex].groupList[groupIndex]);
-
                     if(groupIndex >= 0) {
                         //add channel to group
                         users.users[userIndex].groupList[groupIndex].channels
@@ -64,13 +62,13 @@ module.exports = function(app, fs) {
                     } else {
                         res.json({
                             'add': false,
-                            'comment': 'is admin of group that doesn\t exist'
+                            'comment': 'is admin of group that doesn\'t exist'
                         });
                     }
                 } else {
                     res.json({
                         'add': false,
-                        'comment': 'is not admin or user doesn\t exist'
+                        'comment': 'is not admin or user doesn\'t exist'
                     });
                 }
             }

@@ -1,1 +1,1 @@
-{"users":[{"username":"super","email":"admin@chat.com","password":"super","type":"super","groupList":[], "adminGroupList": []},{"username":"johndoe","password":"password","email":"john@doe.com","type":"basic","groupList":[],"adminGroupList": []}]}
+{"users":[{"username":"super","email":"admin@chat.com","password":"super","type":"super","groupList":[{"groupName":"first group","channels":["main"]}],"adminGroupList":["first group"]}]}

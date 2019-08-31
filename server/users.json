@@ -1,7 +1,1 @@
-{"users":[{
-    "username":"super",
-    "email":"admin@chat.com",
-    "password":"super",
-    "type":"super",
-    "groupList":[{"groupName":"first group","channels":["main"]},{"groupName":"new group","channels":["main"]},{"groupName":"another group","channels":["main"]}],
-    "adminGroupList":["first group","new group","another group"]}]}
+{"users":[{"username":"super","email":"admin@chat.com","password":"super","type":"super","groupList":[{"groupName":"first group","channels":["main"]},{"groupName":"second group","channels":["main"]}],"adminGroupList":["first group","second group"]}]}

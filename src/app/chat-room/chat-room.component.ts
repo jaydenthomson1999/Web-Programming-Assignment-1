@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { resolve } from 'dns';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { reject } from 'q';
 
 interface Put {
   add: boolean;
@@ -28,10 +26,14 @@ export class ChatRoomComponent implements OnInit {
   private modalInput;
 
   private groupList: any[];
+  private channelList: any[];
   private adminGroupList: any[];
 
   private addGroupUrl = 'http://localhost:3000/api/add-group';
   private getGroupUrl = 'http://localhost:3000/api/get-groups';
+
+  private selectedGroup: string;
+  private selectedChannel: string;
 
   constructor(private router: Router, private http: HttpClient) {
     this.user = JSON.parse(sessionStorage.getItem('user'));
@@ -82,6 +84,7 @@ export class ChatRoomComponent implements OnInit {
       data.then(bool => {
         if (bool) {
           // get user groups
+          this.get_groups();
         }
         else {
           alert('Couldn\'t add group');
@@ -116,5 +119,14 @@ export class ChatRoomComponent implements OnInit {
       this.adminGroupList = json.adminGroupList;
       this.groupList = json.groupList;
     });
+  }
+
+  groupSelected() {
+    for (let i = 0; i < this.groupList.length; i++) {
+      if (this.groupList[i].groupName === this.selectedGroup) {
+        this.channelList = this.groupList[i].channels;
+        break;
+      }
+    }
   }
 }

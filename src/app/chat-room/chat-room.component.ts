@@ -3,9 +3,16 @@ import { Router } from '@angular/router';
 import { resolve } from 'dns';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { reject } from 'q';
 
 interface Put {
   add: boolean;
+}
+
+interface Get {
+  ok: boolean;
+  groupList: any[];
+  adminGroupList: any[];
 }
 
 @Component({
@@ -20,8 +27,11 @@ export class ChatRoomComponent implements OnInit {
   private modalTitle;
   private modalInput;
 
-  private groupUrl = 'http://localhost:3000/api/add-group';
-  private channelUrl = 'http://localhost:3000/api/add-group';
+  private groupList: any[];
+  private adminGroupList: any[];
+
+  private addGroupUrl = 'http://localhost:3000/api/add-group';
+  private getGroupUrl = 'http://localhost:3000/api/get-groups';
 
   constructor(private router: Router, private http: HttpClient) {
     this.user = JSON.parse(sessionStorage.getItem('user'));
@@ -32,6 +42,8 @@ export class ChatRoomComponent implements OnInit {
     if (this.user.type === 'super' || this.user.type === 'group admin') {
       this.privilege = true;
     }
+
+    this.get_groups();
   }
 
   ngOnInit() {
@@ -49,10 +61,10 @@ export class ChatRoomComponent implements OnInit {
     if (this.modalTitle === 'Add Group') {
       // add group api
       const data = new Promise((resolve, reject) => {
-        this.http.put<Put>(this.groupUrl,
+        this.http.put<Put>(this.addGroupUrl,
           { groupName: this.modalInput,
-            username: (JSON.parse(sessionStorage.getItem('user')).username)})
-            .subscribe(
+            username: (JSON.parse(sessionStorage.getItem('user')).username)
+          }).subscribe(
             res => {
               if (res.add) {
                 resolve(res.add);
@@ -79,5 +91,30 @@ export class ChatRoomComponent implements OnInit {
     else {
       // add channel api
     }
+  }
+
+  get_groups() {
+    const data = new Promise<any>((resolve, reject) => {
+      this.http.post<Get>(this.getGroupUrl, {
+        username: (JSON.parse(sessionStorage.getItem('user')).username)
+      }).subscribe(
+        res => {
+          if (res.ok) {
+            resolve(res);
+          } else {
+            resolve(false);
+          }
+        },
+        (err: HttpErrorResponse) => {
+          console.log(err.error);
+          reject(err.error);
+        }
+      );
+    });
+
+    data.then(json => {
+      this.adminGroupList = json.adminGroupList;
+      this.groupList = json.groupList;
+    });
   }
 }

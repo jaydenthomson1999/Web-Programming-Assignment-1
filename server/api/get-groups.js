@@ -1,5 +1,5 @@
 module.exports = function(app, fs) {
-    app.get('/api/get-groups', (req, res) => {
+    app.post('/api/get-groups', (req, res) => {
         let { username } = req.body;
         console.log(username);
 

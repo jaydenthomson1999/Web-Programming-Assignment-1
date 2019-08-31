@@ -19,7 +19,12 @@ export class UserAddComponent implements OnInit {
   private email: string;
   private type: string;
 
-  constructor(private router: Router, private http: HttpClient) { }
+  constructor(private router: Router, private http: HttpClient) {
+    const user = JSON.parse(sessionStorage.getItem('user'));
+    if (user === null) {
+      this.router.navigateByUrl('/');
+    }
+   }
 
   ngOnInit() {
   }

@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
+      <ul class="navbar-nav">
           <li class="navbar-brand mb-0 h1">{{user.username}}</li>
           <div class="form-inline pr-3">
               <label for="exampleFormControlSelect1">Group: </label>
@@ -16,12 +16,12 @@
               </select>
               <button (click)="addChannelModal()" data-toggle="modal" data-target="#myModal" type="button" class="btn btn-primary btn-sm ml-1">+</button>
             </div>
-          <li *ngIf="privilege" class="nav-item active">
-              <a routerLink="/user-list" class="nav-link" >Users<span class="sr-only"></span></a>
+          <li *ngIf="privilege" class="nav-item active mr-3">
+              <a (click)="goto_users()" class="nav-link" >Users<span class="sr-only"></span></a>
           </li>
-
+          <button (click)="logout()" type="button" class="btn btn-outline-dark float-right btn-sm">Logout</button>
       </ul>
-  </div>
+    </div>
 </nav>
 
 <div id="messages">

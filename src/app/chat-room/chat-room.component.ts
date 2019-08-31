@@ -129,4 +129,13 @@ export class ChatRoomComponent implements OnInit {
       }
     }
   }
+
+  logout() {
+    sessionStorage.removeItem('user');
+    this.router.navigateByUrl('/');
+  }
+
+  goto_users() {
+    this.router.navigate(['/user-list']);
+  }
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 interface Get {
   ok: boolean;
@@ -15,9 +15,17 @@ interface Get {
 })
 export class UserListComponent implements OnInit {
   private url = 'http://localhost:3000/api/get-users';
+  private group;
+  private channel;
   private users;
 
-  constructor(private http: HttpClient, private router: Router) {
+  constructor(private http: HttpClient, private router: Router,
+    private route: ActivatedRoute) {
+    const user = JSON.parse(sessionStorage.getItem('user'));
+    if (user === null) {
+      this.router.navigateByUrl('/');
+    }
+
     if (JSON.parse(sessionStorage.getItem('user')).type !== 'super') {
       router.navigateByUrl('/chat-room');
     }
@@ -25,6 +33,7 @@ export class UserListComponent implements OnInit {
    }
 
   ngOnInit() {
+
   }
 
   get_users() {

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
 
@@ -8,13 +8,18 @@ interface Get {
   users: any;
 }
 
+interface Delete {
+  delete: boolean;
+}
+
 @Component({
   selector: 'app-user-list',
   templateUrl: './user-list.component.html',
   styleUrls: ['./user-list.component.css']
 })
 export class UserListComponent implements OnInit {
-  private url = 'http://localhost:3000/api/get-users';
+  private getUrl = 'http://localhost:3000/api/get-users';
+  private delUrl = 'http://localhost:3000/api/del-user';
   private group;
   private channel;
   private users;
@@ -37,7 +42,7 @@ export class UserListComponent implements OnInit {
 
   get_users() {
     const data = new Promise((resolve, reject) => {
-      this.http.get<Get>(this.url).subscribe(
+      this.http.get<Get>(this.getUrl).subscribe(
         res => {
           if (res.ok) {
             resolve(res.users.users);
@@ -57,8 +62,39 @@ export class UserListComponent implements OnInit {
     });
   }
 
-  delUser() {
-    
+  delUser(username) {
+    console.log(username);
+
+    // delete user
+    const httpOptions = {
+      headers: new HttpHeaders({'Content-Type': 'application/json'}),
+      body: {username}
+    };
+
+    const del = new Promise((resolve, reject) => {
+      this.http.delete<Delete>(this.delUrl, httpOptions).subscribe(
+        res => {
+          if (res.delete) {
+            resolve(res.delete);
+          } else {
+            resolve(false);
+          }
+        },
+        (err: HttpErrorResponse) => {
+          console.log(err.error);
+          reject(err.error);
+        }
+      );
+    });
+
+    // get users again
+    del.then(bool => {
+      if (bool) {
+        this.get_users();
+      } else {
+        alert('Couldn\'t delete user');
+      }
+    });
   }
 
 }

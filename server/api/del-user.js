@@ -3,6 +3,8 @@ module.exports = function(app, fs) {
         let foundUser = false;
         let userIndex;
 
+        console.log(req.body);
+
         fs.readFile(__dirname + '/../users.json', (err, data) => {
             if (err) {
                 console.log(err)
@@ -29,7 +31,7 @@ module.exports = function(app, fs) {
                                 res.json({'err': err});
                                 return;
                             } else {
-                                res.json({'add': true});
+                                res.json({'delete': true});
                                 return;
                             }
                         });

@@ -4,6 +4,8 @@ module.exports = function(app, fs) {
         let username = req.body.username;
         let foundUser = false;
         let userIndex;
+
+        console.log(req.body);
     
         fs.readFile(__dirname + '/../users.json', (err, data) => {
             if(err) {

@@ -20,6 +20,7 @@ interface Delete {
 export class UserListComponent implements OnInit {
   private getUrl = 'http://localhost:3000/api/get-users';
   private delUrl = 'http://localhost:3000/api/del-user';
+  private user;
   private group;
   private channel;
   private users;
@@ -30,10 +31,16 @@ export class UserListComponent implements OnInit {
       this.router.navigateByUrl('/');
     }
 
-    if (JSON.parse(sessionStorage.getItem('user')).type !== 'super') {
+    if (JSON.parse(sessionStorage.getItem('user')).type !== 'super' &&
+        JSON.parse(sessionStorage.getItem('user')).type !== 'group admin') {
       router.navigateByUrl('/chat-room');
     }
+
+    this.user = JSON.parse(sessionStorage.getItem('user'));
+
     this.get_users();
+
+
    }
 
   ngOnInit() {

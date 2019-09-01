@@ -2,3 +2,16 @@
   <span class="navbar-brand mb-0 h1">Group List</span>
 </nav>
 
+<div class="d-flex">
+    <ul class="list-group w-50">
+      <button *ngFor="let group of adminGroupList" (click)="selectGroup(group)" type="button" class="list-group-item list-group-item-action">
+          {{group}}
+          <button (click)="deleteGroup(group)" type="button" class="btn btn-light float-right">DELETE</button>
+      </button>
+    </ul>
+    <ul class="list-group w-50">
+      <button *ngFor="let channel of channelList" type="button" class="list-group-item list-group-item-action">
+          {{channel}}
+      </button>
+    </ul>
+</div>

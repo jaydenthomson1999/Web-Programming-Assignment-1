@@ -4,11 +4,7 @@ import { Observable } from 'rxjs';
 
 interface Post {
   ok: boolean;
-  username: string;
-  email: string;
-  type: string;
-  groupList: string[];
-  adminGroupList: string[];
+  user: any;
 }
 
 @Injectable({
@@ -26,7 +22,7 @@ export class LoginServiceService {
           console.log(res);
           if (res.ok) {
             delete res.ok;
-            sessionStorage.setItem('user', JSON.stringify(res));
+            sessionStorage.setItem('user', JSON.stringify(res.user));
           }
           resolve(res.ok);
         },

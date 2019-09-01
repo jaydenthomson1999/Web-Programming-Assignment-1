@@ -14,11 +14,11 @@ module.exports = function(app, fs) {
                     if(users.users[user].username == username) {
                         if(users.users[user].password == password) {
                             ok = true;
+                            delete users.users[user].password;
+
                             res.json({
                                 'ok': true, 
-                                'username': users.users[user].username,  
-                                'email': users.users[user].email, 
-                                'type': users.users[user].type 
+                                'user': users.users[user]
                             });
                         }
                         else 

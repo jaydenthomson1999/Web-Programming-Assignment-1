@@ -6,8 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./group-list.component.css']
 })
 export class GroupListComponent implements OnInit {
+  private user;
 
-  constructor() { }
+  constructor() {
+    this.user = JSON.parse(sessionStorage.getItem('user'));
+    console.log(this.user);
+  }
 
   ngOnInit() {
   }

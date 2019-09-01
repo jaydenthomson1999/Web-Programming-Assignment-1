@@ -5,6 +5,8 @@ module.exports = function(app, fs) {
         let userIndex = -1;
         let groupIndex = -1;
 
+        console.log({ adminUser, delUser, groupName });
+
         // open file
         fs.readFile(__dirname + '/../users.json', (err, data) => {
             if(err) {

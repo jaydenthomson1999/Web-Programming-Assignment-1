@@ -31,6 +31,7 @@ require(__dirname + '/api/del-group.js')(app, fs);
 require(__dirname + '/api/add-user-to-group.js')(app, fs);
 require(__dirname + '/api/add-user-to-channel.js')(app, fs);
 require(__dirname + '/api/del-user-from-group.js')(app, fs);
+require(__dirname + '/api/del-user-from-channel.js')(app, fs);
 
 //Start server listening for requests
 server.listen(http, PORT);

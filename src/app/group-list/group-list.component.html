@@ -6,6 +6,7 @@
     <ul class="list-group w-50">
       <button *ngFor="let group of adminGroupList" (click)="selectGroup(group)" type="button" class="list-group-item list-group-item-action">
           {{group}}
+          <button type="button" class="btn btn-light float-right">ADD USER</button>
           <button (click)="deleteGroup(group)" type="button" class="btn btn-light float-right">DELETE</button>
       </button>
     </ul>

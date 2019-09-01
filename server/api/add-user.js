@@ -2,13 +2,13 @@ module.exports = function(app, fs) {
     app.put('/api/add-user', (req, res) => {
         let new_user = req.body;
 
-        //check if user exits
         fs.readFile(__dirname + '/../users.json', (err, data) => {
             if (err) {
                 console.log(err);
                 res.json({'err': err});
             }
             else {
+                //check if user exits
                 let users = JSON.parse(data);
 
                 for(user in users.users) {

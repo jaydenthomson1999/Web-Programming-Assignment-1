@@ -164,4 +164,8 @@ export class ChatRoomComponent implements OnInit {
   goto_users() {
     this.router.navigate(['/user-list']);
   }
+
+  gotoGroups() {
+    this.router.navigate(['/group-list']);
+  }
 }

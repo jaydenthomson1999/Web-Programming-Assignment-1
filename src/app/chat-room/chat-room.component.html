@@ -17,8 +17,8 @@
               <button *ngIf="selectedGroup != undefined" (click)="addChannelModal()" data-toggle="modal" data-target="#myModal" type="button" class="btn btn-primary btn-sm ml-1">+</button>
             </div>
           <div *ngIf="privilege" class="form-inline active mr-3">
-              <button (click)="goto_users()" type="button" class="btn btn-outline-dark btn mr-3">Users</button>
-              <button type="button" class="btn btn-outline-dark float-right btn">My Groups</button>
+              <button (click)="gotoGroups()" type="button" class="btn btn-outline-dark float-right btn">My Groups</button>
+              <button (click)="goto_users()" type="button" class="btn btn-outline-dark btn ml-3">Users</button>
           </div>
           <button (click)="logout()" type="button" class="btn btn-outline-dark float-right btn">Logout</button>
       </ul>

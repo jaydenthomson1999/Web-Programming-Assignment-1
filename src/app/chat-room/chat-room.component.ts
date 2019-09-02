@@ -52,14 +52,17 @@ export class ChatRoomComponent implements OnInit {
   ngOnInit() {
   }
 
+  // changes modal header
   addGroupModal() {
     this.modalTitle = 'Add Group';
   }
 
+  // changes modal header
   addChannelModal() {
     this.modalTitle = 'Add Channel';
   }
 
+  // adds group or channel
   modalAdd() {
     if (this.modalTitle === 'Add Group') {
       // add group api
@@ -122,6 +125,7 @@ export class ChatRoomComponent implements OnInit {
     }
   }
 
+  // uses get request to update groupList and adminGroup list
   get_groups() {
     const data = new Promise<any>((resolve, reject) => {
       this.http.post<Get>(this.getGroupUrl, {
@@ -147,6 +151,7 @@ export class ChatRoomComponent implements OnInit {
     });
   }
 
+  // changes which group is selected
   groupSelected() {
     for (let i = 0; i < this.groupList.length; i++) {
       if (this.groupList[i].groupName === this.selectedGroup) {
@@ -156,15 +161,18 @@ export class ChatRoomComponent implements OnInit {
     }
   }
 
+  // logs user out
   logout() {
     sessionStorage.removeItem('user');
     this.router.navigateByUrl('/');
   }
 
+  // goes to user list page
   goto_users() {
     this.router.navigate(['/user-list']);
   }
 
+  // goes to groupList page
   gotoGroups() {
     this.router.navigate(['/group-list']);
   }

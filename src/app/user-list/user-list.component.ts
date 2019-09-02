@@ -47,6 +47,7 @@ export class UserListComponent implements OnInit {
 
   }
 
+  // get users from backend
   get_users() {
     const data = new Promise((resolve, reject) => {
       this.http.get<Get>(this.getUrl).subscribe(
@@ -69,6 +70,7 @@ export class UserListComponent implements OnInit {
     });
   }
 
+  // del user from backend
   delUser(username) {
     console.log(username);
 

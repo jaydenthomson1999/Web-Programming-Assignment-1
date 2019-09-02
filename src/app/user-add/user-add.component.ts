@@ -29,6 +29,7 @@ export class UserAddComponent implements OnInit {
   ngOnInit() {
   }
 
+  // add user to backend list
   add_user() {
     if (this.username === undefined ||
         this.password === undefined ||
@@ -71,10 +72,12 @@ export class UserAddComponent implements OnInit {
     });
   }
 
+  // goes back when user
   go_back() {
     this.router.navigateByUrl('/user-list');
   }
 
+  // shows error
   show_error() {
     alert('Error Occured');
   }

@@ -59,6 +59,7 @@ export class GroupListComponent implements OnInit {
   ngOnInit() {
   }
 
+  // changes selected group
   selectGroup(groupName: string) {
     for( let i = 0; i < this.groupList.length; i++) {
       if (this.groupList[i].groupName === groupName) {
@@ -69,6 +70,7 @@ export class GroupListComponent implements OnInit {
     }
   }
 
+  // performs get groups request
   getGroups() {
     const data = new Promise<any>((resolve, reject) => {
       this.http.post<GetGroups>(this.getGroupUrl, {
@@ -94,6 +96,7 @@ export class GroupListComponent implements OnInit {
     });
   }
 
+  // performs delete groups request
   deleteGroup(groupName: string) {
     // delete group
     const httpOptions = {
@@ -126,6 +129,7 @@ export class GroupListComponent implements OnInit {
     });
   }
 
+  // presents modal
   apiModal(operation: string, type: string, name: string) {
     this.modalList = [];
     this.operation = operation;
@@ -178,10 +182,12 @@ export class GroupListComponent implements OnInit {
     });
   }
 
+  // changes the selected user
   selectUser(username) {
     this.selectedUser = username;
   }
 
+  // trigers modal operation
   modalConfirm() {
     let bool: Promise<any>;
 
@@ -217,6 +223,7 @@ export class GroupListComponent implements OnInit {
 
   }
 
+  // adds user to group in backend
   private addUserGroup(adminUser, addUser, groupName) {
     return new Promise((resolve, reject) => {
       this.http.put<Put>(this.addUserGroupUrl,
@@ -236,6 +243,7 @@ export class GroupListComponent implements OnInit {
     });
   }
 
+  // adds user to channel in back end
   private addUserChannel(adminUser, addUser, groupName, channelName) {
     return new Promise((resolve, reject) => {
       this.http.put<Put>(this.addUserChannelUrl,
@@ -256,6 +264,7 @@ export class GroupListComponent implements OnInit {
     });
   }
 
+  // deletes user from a group in backend
   private delUserGroup(adminUser, delUser, groupName) {
     const httpOptions = {
       headers: new HttpHeaders({'Content-Type': 'application/json'}),
@@ -280,6 +289,7 @@ export class GroupListComponent implements OnInit {
     });
   }
 
+  // deletes user from channel in backend
   private delUserChannel(adminUser, delUser, groupName, channelName) {
     const httpOptions = {
       headers: new HttpHeaders({'Content-Type': 'application/json'}),

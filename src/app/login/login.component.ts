@@ -18,6 +18,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
+  // fires when user confirms login form
   private loginAttempt() {
     const login = this.loginService.login(this.username, this.password);
     login.then(data => {

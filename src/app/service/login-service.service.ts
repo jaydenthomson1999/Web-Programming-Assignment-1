@@ -15,6 +15,7 @@ export class LoginServiceService {
 
   constructor(private http: HttpClient) { }
 
+  // performs login request
   public login(username: string, password: string) {
     return new Promise((resolve, reject) => {
       this.http.post<Post>(this.url, {username, password}).subscribe(

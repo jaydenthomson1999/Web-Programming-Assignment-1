@@ -43,17 +43,40 @@ Each group in a group list has a group name and an array of channel names. Each 
 |-------|--------------|-----------|---------------|-------------|
 | /api/login | POST | { username: string, password: string } | { ok: boolean, user: json } | Finds user in user.json file and checks to see if there password matches one on record |
 | /api/add-user | PUT | { newUser: json } | { add: boolean } | Searches through whole user.json file to see if newUser.username exists, if it doesn't, they will be added as a new user |
-| /api/get-users | GET | No Parameters | { ok: boolean, user: json } | |
-| /api/add-group | PUT | { username: string, groupName: string } | { add: boolean, comment: string} | |
-| /api/get-groups | POST | { username: string } | { ok: boolean, groupList: json[], adminGroupList: string[] } | |
-| /api/del-user | DELETE | { username: string } | { delete: boolean, comment: string } | |
-| /api/add-channel | PUT | { username: string, groupName: string, channelName: string } | { add: boolean, comment: string } | |
-| /api/del-group | DELETE | { username: string, groupName: string } | { delete: boolean, comment: string } | |
-| /api/add-user-to-group | PUT | { adminUser: string, addUser: string, groupName: string } | { add: boolean, comment: string } | |
-| /api/add-user-to-channel | PUT | { adminUser: string, addUser: string, groupName: string, channelName: string } | { add: boolean, comment: string } | |
-| /api/del-user-from-group | DELETE | { adminUser: string, addUser: string, groupName: string } | { delete: boolean, comment: string } | |
-| /api/del-user-from-channel | DELETE | { adminUser: string, addUser: string, groupName: string, channelName: string } | { delete: boolean, comment: string } | |
+| /api/get-users | GET | No Parameters | { ok: boolean, users: json[] } | Returns array of users except the super user |
+| /api/add-group | PUT | { username: string, groupName: string } | { add: boolean, comment: string } | Checks to see if group exists, if it doesn't, the new group will be added and will be appended to the adminGroupList of the specified admin |
+| /api/get-groups | POST | { username: string } | { ok: boolean, groupList: json[], adminGroupList: string[] } | Returns the list of groups and admin groups of a specified user |
+| /api/del-user | DELETE | { username: string } | { delete: boolean, comment: string } | Finds user in user.json and removes it from the file |
+| /api/add-channel | PUT | { username: string, groupName: string, channelName: string } | { add: boolean, comment: string } | Adds a channel to a users groupList if they are a memeber of a group |
+| /api/del-group | DELETE | { username: string, groupName: string } | { delete: boolean, comment: string } | If username is a group admin of the group name it will be deleted from every users group list if it exists |
+| /api/add-user-to-group | PUT | { adminUser: string, addUser: string, groupName: string } | { add: boolean, comment: string } | Adds user to a group if adminUser is the admin of the group name |
+| /api/add-user-to-channel | PUT | { adminUser: string, addUser: string, groupName: string, channelName: string } | { add: boolean, comment: string } | Adds user to a channel if user is already a memeber of the group and adminUser is an admin of the group |
+| /api/del-user-from-group | DELETE | { adminUser: string, delUser: string, groupName: string } | { delete: boolean, comment: string } | If admin user is the admin of the group name and del user is a memeber of the group they will be deleted from the group |
+| /api/del-user-from-channel | DELETE | { adminUser: string, delUser: string, groupName: string, channelName: string } | { delete: boolean, comment: string } | If admin is the admin of the group and del user is a memeber of the channel they will be deleted from the channel |
 
 # Angular Architecture
+## Login Page
+First page is the login page, when the user submits there login form the page interacts with the login service which uses the api/login request.
+
+## Chat Room Page
+After the user logs in they will be directed to the chat room landing page. If the user has admin privileges they can be able to add groups and channels using api/add-group and api/add-channel. Privilege users can also be able to go to the group list page and the user list page.
+
+## Group List
+The group list page is where an admin can add users to there groups/channels using api/add-user-to-group and api/add-user-to-channel and where they can delete groups/channels using api/del-user-from-group and api/del-user-from-channel. 
+
+## User List
+The user list page is used for the super user to delete users using the api/del-user request. This page can then go to the user add page to add new users.
+
+## User Add
+The user add page is used for the super to add user using the api/add-user request.
+
 
 # State Change
+## Server
+Any PUT or DELETE request will change the users.json file which is used to record user settings and groups.
+
+## Angular
+Most GET or POST request made by the Angular side will change the page html using an ngFor or ngIf. 
+- api/get-users is used on the user list page to display all users
+- api/get-groups is used to display groups on the group list page as well as the chat page to select channels
+- api/login takes users to there chat room home page with there username displayed

@@ -1,3 +1,7 @@
+/**
+ * Adds user to a group if adminUser is the admin of the group name
+ */
+
 module.exports = function(app, fs) {
     app.put('/api/add-user-to-group', (req, res) => {
         let { adminUser, addUser, groupName } = req.body;

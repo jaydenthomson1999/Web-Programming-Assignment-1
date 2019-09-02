@@ -1,3 +1,6 @@
+/* 
+    Adds a channel to a users groupList if they are a memeber of a group
+*/
 module.exports = function(app, fs) {
     app.put('/api/add-channel', (req, res) => {
         let {username, groupName, channelName} = req.body;

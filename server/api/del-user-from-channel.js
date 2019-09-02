@@ -1,3 +1,8 @@
+/**
+ * If admin is the admin of the group and del user is a memeber of the 
+ * channel they will be deleted from the channel
+ */
+
 module.exports = function(app, fs) { 
     app.delete('/api/del-user-from-channel', (req, res) => {
         let { adminUser, delUser, groupName, channelName } = req.body;

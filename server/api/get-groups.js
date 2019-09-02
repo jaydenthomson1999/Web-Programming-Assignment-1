@@ -1,3 +1,7 @@
+/*
+    Returns the list of groups and admin groups of a specified user
+*/
+
 module.exports = function(app, fs) {
     app.post('/api/get-groups', (req, res) => {
         let { username } = req.body;

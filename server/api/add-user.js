@@ -1,3 +1,7 @@
+/*  Searches through whole user.json file to see if newUser.username exists, 
+    if it doesn't, they will be added as a new user
+*/
+
 module.exports = function(app, fs) {
     app.put('/api/add-user', (req, res) => {
         let new_user = req.body;

@@ -1,3 +1,7 @@
+/**
+ * If admin user is the admin of the group name and del user is a 
+ * memeber of the group they will be deleted from the group
+ */
 module.exports = function(app, fs) {
     app.delete('/api/del-user-from-group', (req, res) => {
         let { adminUser, delUser, groupName } = req.body;

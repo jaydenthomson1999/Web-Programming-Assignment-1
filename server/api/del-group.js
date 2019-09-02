@@ -1,3 +1,7 @@
+/* 
+    If username is a group admin of the group name it will be deleted
+    from every users group list if it exists
+*/
 module.exports = function(app, fs) {
     app.delete('/api/del-group', (req, res) => {
         let { username, groupName } = req.body;

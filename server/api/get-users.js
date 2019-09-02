@@ -1,3 +1,7 @@
+/*
+    Returns array of users except the super user
+*/
+
 module.exports = function(app, fs) {
     app.get('/api/get-users', (req, res) => {
         fs.readFile(__dirname + '/../users.json', (err, data) => {

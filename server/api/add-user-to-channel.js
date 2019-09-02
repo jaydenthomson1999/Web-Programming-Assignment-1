@@ -1,3 +1,8 @@
+/**
+ * Adds user to a channel if user is already a memeber of the group and 
+ * adminUser is an admin of the group
+ */
+
 module.exports = function(app, fs) {
     app.put('/api/add-user-to-channel', (req, res) => {
         let { adminUser, addUser, groupName, channelName } = req.body;

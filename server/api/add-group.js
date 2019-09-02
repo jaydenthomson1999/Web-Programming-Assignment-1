@@ -1,3 +1,9 @@
+/*
+    Checks to see if group exists, if it doesn't, 
+    the new group will be added and will be appended to the adminGroupList of 
+    the specified admin
+*/
+
 module.exports = function(app, fs) {
     app.put('/api/add-group', (req, res) => {
         let groupName = req.body.groupName;

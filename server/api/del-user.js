@@ -1,3 +1,7 @@
+/* 
+    Finds user in user.json and removes it from the file
+*/
+
 module.exports = function(app, fs) {
     app.delete('/api/del-user', (req, res) => {
         let foundUser = false;

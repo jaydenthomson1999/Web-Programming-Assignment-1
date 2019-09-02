@@ -1,3 +1,6 @@
+/*  Finds user in user.json file and checks to see 
+    if there password matches one on record
+*/
 module.exports = function(app, fs) {
     app.post('/api/login', (req, res) => {
         let {username, password} = req.body;
